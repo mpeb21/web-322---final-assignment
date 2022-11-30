@@ -126,6 +126,8 @@ app.get("/htmlDemo", (req,res) => {
     res.render("htmlDemo");
 });
 
+app.get("/students", ensureLogin,(req, res) => {
+
 
     if (req.query.course) {
         
@@ -148,7 +150,9 @@ app.get("/htmlDemo", (req,res) => {
             res.render("students",{message: "no results",user:req.session.user});
         });
     }
+});
 
+app.get("/courses", ensureLogin,(req,res) => {
     data.getCourses().then(function(data){
         if(data.length>0)
         {
@@ -161,21 +165,37 @@ app.get("/htmlDemo", (req,res) => {
     }).catch(err =>{
         res.render("students",{message: "no results",user:req.session.user});
     });
+});
 
-   res.render("addCourse",{user:req.session.user});
+app.get("/courses/add",ensureLogin,(req,res) => {
+    res.render("addCourse",{user:req.session.user});
+});
 
+
+app.get("/students/add", ensureLogin,(req,res) => {
     data.getCourses().then(function(data){
         res.render("addStudent", {courses: data,user:req.session.user});
     }).catch(function(){
         res.render("addStudent", {courses: [],user:req.session.user});
     });
     
+});
+
+app.post("/courses/add", ensureLogin,(req, res) => {
     data.addCourse(req.body).then(()=>{
       res.redirect("/courses");
     });
+  });
+
+
+app.post("/students/add", ensureLogin,(req, res) => {
     data.addStudent(req.body).then(()=>{
       res.redirect("/students");
     });
+  });
+
+
+  app.get("/student/:studentNum",ensureLogin, (req, res) => {
     // initialize an empty object to store the values 
     let viewData = {};
     data.getStudentByNum(req.params.studentNum).then((data) => { 
@@ -203,17 +223,25 @@ app.get("/htmlDemo", (req,res) => {
     res.status(404).send("Student Not Found"); } else {
     res.render("student", { viewData: viewData,user:req.session.user }); // render the "student" view 
     }
-    });
+    });});
+
+app.post("/course/update", ensureLogin,(req, res) => {
 
     req.body.courseId = parseInt(req.body.courseId);
 
     data.updateCourse(req.body).then(() => {
         res.redirect("/courses");
     });
+});
 
+app.post("/student/update", ensureLogin,(req, res) => {
     data.updateStudent(req.body).then(() => {
         res.redirect("/students");
     });
+});
+
+
+app.get("/course/:id", ensureLogin,(req, res) => {
 
     data.getCourseById(req.params.id).then((d) => {
         if(d)
@@ -227,18 +255,23 @@ app.get("/htmlDemo", (req,res) => {
     }).catch((err) => {
         res.render("course",{message:"no results",user:req.session.user}); 
     });
+});
 
+app.get("/course/delete/:id",ensureLogin, (req, res) => {
     data.deleteCourseById(req.params.id).then(() => {
         res.redirect("/courses");
     }).catch((err) => {
         res.status(500).send("Unable to Remove Course / Course not found");
     });
+});
 
+app.get("/student/delete/:studentNum", ensureLogin,(req, res) => {
     data.deleteStudentByNum(req.params.studentNum).then(() => {
         res.redirect("/students");
     }).catch((err) => {
         res.status(500).send("Unable to Remove Student / Student not found");
     });
+});
 
 app.use((req,res)=>{
     res.status(404).send("Page Not Found");
