@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Login</title>
+</head>
+
+<body>
+    <br/>
+  {{#if errorMsg}}
+    <h2>{{errorMsg}}</h2>
+  {{else}}
+    <h2>Login</h2>
+    <br/>
+  {{/if}}
+
+  <form method="post" action="/login">
+    <label>Username</label>
+    <br/>
+    <input  class="form-control" name="username" type="text">
+    <br/>
+    <br/>
+    <label>Password</label>
+    <br/>
+    <input  class="form-control" name="password" type="password">
+    <br/>
+    <br/>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</body>
+
+</html>
