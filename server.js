@@ -63,9 +63,7 @@ const user = {
     email: "sampleuser@example.com"
 };
 
-
-  
-  // The login route that adds the user to the session
+// The login route that adds the user to the session
   app.post("/login", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -88,8 +86,7 @@ const user = {
     }
   });
   
- 
-  app.get("/logout", function(req, res) {
+   app.get("/logout", function(req, res) {
     req.session.reset();
     res.redirect("/login");
   });
@@ -127,8 +124,6 @@ app.get("/htmlDemo", (req,res) => {
 });
 
 app.get("/students", ensureLogin,(req, res) => {
-
-
     if (req.query.course) {
         
         data.getStudentsByCourse(req.query.course).then((data) => {
@@ -171,7 +166,6 @@ app.get("/courses/add",ensureLogin,(req,res) => {
     res.render("addCourse",{user:req.session.user});
 });
 
-
 app.get("/students/add", ensureLogin,(req,res) => {
     data.getCourses().then(function(data){
         res.render("addStudent", {courses: data,user:req.session.user});
@@ -187,15 +181,13 @@ app.post("/courses/add", ensureLogin,(req, res) => {
     });
   });
 
-
 app.post("/students/add", ensureLogin,(req, res) => {
     data.addStudent(req.body).then(()=>{
       res.redirect("/students");
     });
   });
 
-
-  app.get("/student/:studentNum",ensureLogin, (req, res) => {
+ app.get("/student/:studentNum",ensureLogin, (req, res) => {
     // initialize an empty object to store the values 
     let viewData = {};
     data.getStudentByNum(req.params.studentNum).then((data) => { 
@@ -226,9 +218,7 @@ app.post("/students/add", ensureLogin,(req, res) => {
     });});
 
 app.post("/course/update", ensureLogin,(req, res) => {
-
     req.body.courseId = parseInt(req.body.courseId);
-
     data.updateCourse(req.body).then(() => {
         res.redirect("/courses");
     });
@@ -239,7 +229,6 @@ app.post("/student/update", ensureLogin,(req, res) => {
         res.redirect("/students");
     });
 });
-
 
 app.get("/course/:id", ensureLogin,(req, res) => {
 
@@ -276,7 +265,6 @@ app.get("/student/delete/:studentNum", ensureLogin,(req, res) => {
 app.use((req,res)=>{
     res.status(404).send("Page Not Found");
 });
-
 
 data.initialize().then(function(){
     app.listen(HTTP_PORT, function(){

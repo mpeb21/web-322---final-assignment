@@ -11,13 +11,15 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>First Name:</label>
-                            <input class="form-control" name="firstName" type="text" value="{{viewData.student.firstName}}" />
+                            <input class="form-control" name="firstName" type="text"
+                                value="{{viewData.student.firstName}}" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Last Name:</label>
-                            <input class="form-control" name="lastName" type="text" value="{{viewData.student.lastName}}" />
+                            <input class="form-control" name="lastName" type="text"
+                                value="{{viewData.student.lastName}}" />
                         </div>
                     </div>
                 </div>
@@ -34,49 +36,52 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Address (Street):</label>
-                            <input class="form-control" name="addressStreet" type="text" value="{{viewData.student.addressStreet}}" />
+                            <input class="form-control" name="addressStreet" type="text"
+                                value="{{viewData.student.addressStreet}}" />
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Address (City):</label>
-                            <input class="form-control" name="addressCity" type="text" value="{{viewData.student.addressCity}}" />
+                            <input class="form-control" name="addressCity" type="text"
+                                value="{{viewData.student.addressCity}}" />
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Address (Province):</label>
-                            <input class="form-control" name="addressProvince" type="text" value="{{viewData.student.addressProvince}}" />
+                            <input class="form-control" name="addressProvince" type="text"
+                                value="{{viewData.student.addressProvince}}" />
                         </div>
                     </div>
                 </div>
-
             </fieldset>
-
             <fieldset>
                 <legend>Academic Information</legend>
                 <div class="row">
                     <div class="col-md-4">
-
                         <label>College Employment:</label><br />
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="TA" id="TA" {{#if viewData.student.TA}} checked {{/if}}>
+                            <input class="form-check-input" type="checkbox" name="TA" id="TA" {{#if
+                                viewData.student.TA}} checked {{/if}}>
                             <label class="form-check-label" for="TA">
                                 Teaching Assistant
                             </label>
                         </div>
                         <br />
-
                     </div>
-
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Enrollment Status:</label><br />
-                            <label  class="checkbox-inline">
-                                <input type="radio" id="statusFT" name="status" {{#equal viewData.student.status "Full Time" }}checked{{/equal}} value="Full Time" /> Full Time
+                            <label class="checkbox-inline">
+                                <input type="radio" id="statusFT" name="status" {{#equal
+                                    viewData.student.status "Full Time" }}checked{{/equal}} value="Full Time" /> Full
+                                Time
                             </label>
                             <label class="checkbox-inline">
-                                <input type="radio" id="statusPT" name="status" {{#equal viewData.student.status "Part Time" }}checked{{/equal}} value="Part Time" /> Part Time
+                                <input type="radio" id="statusPT" name="status" {{#equal
+                                    viewData.student.status "Part Time" }}checked{{/equal}} value="Part Time" /> Part
+                                Time
                             </label>
                         </div>
                     </div>
@@ -84,24 +89,21 @@
                         <div class="form-group">
                             <label for="course">Enrolled in Course:</label>
                             {{#if viewData.courses}}
-                                <select class="form-control" name="course" id="course">
-                                    <option value="">Select Course</option> 
+                            <select class="form-control" name="course" id="course">
+                                <option value="">Select Course</option>
                                 {{#each viewData.courses}}
-                                    <option value="{{courseId}}" {{#if selected}} selected {{/if}} >{{courseCode}} </option> 
+                                <option value="{{courseId}}" {{#if selected}} selected {{/if}}>{{courseCode}} </option>
                                 {{/each}}
-                                </select>
+                            </select>
                             {{else}}
-                                <div>No Courses</div>
+                            <div>No Courses</div>
                             {{/if}}
                         </div>
                     </div>
                 </div>
             </fieldset>
-
             <hr />
-
             <input type="submit" class="btn btn-primary float-right" value="Update Student" /><br /><br /><br />
-
         </form>
     </main>
 </div>

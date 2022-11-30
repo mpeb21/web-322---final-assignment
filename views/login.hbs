@@ -6,25 +6,25 @@
 </head>
 
 <body>
-    <br/>
+  <br />
   {{#if errorMsg}}
-    <h2>{{errorMsg}}</h2>
+  <h2>{{errorMsg}}</h2>
   {{else}}
-    <h2>Login</h2>
-    <br/>
+  <h2>Login</h2>
+  <br />
   {{/if}}
 
   <form method="post" action="/login">
     <label>Username</label>
-    <br/>
-    <input  class="form-control" name="username" type="text">
-    <br/>
-    <br/>
+    <br />
+    <input class="form-control" name="username" type="text">
+    <br />
+    <br />
     <label>Password</label>
-    <br/>
-    <input  class="form-control" name="password" type="password">
-    <br/>
-    <br/>
+    <br />
+    <input class="form-control" name="password" type="password">
+    <br />
+    <br />
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
 </body>
