@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "Maria Patricia",
+  "author": "Maria Patricia Espinoza Bueno",
   "license": "ISC",
   "dependencies": {
     "client-sessions": "^0.8.0",

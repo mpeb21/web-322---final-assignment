@@ -25,7 +25,6 @@
                             <input class="form-control" name="email" type="email" />
                         </div>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -47,14 +46,11 @@
                         </div>
                     </div>
                 </div>
-
             </fieldset>
-
             <fieldset>
                 <legend>Academic Information</legend>
                 <div class="row">
                     <div class="col-md-4">
-
                         <label>College Employment:</label><br />
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="TA" id="TA">
@@ -63,10 +59,7 @@
                             </label>
                         </div>
                         <br />
-
                     </div>
-
-
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Enrollment Status:</label><br />
@@ -81,32 +74,25 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="course">Enrolled in Course:</label>
-                            
-                               {{#if courses}}
-                                    <select class="form-control" name="course" id="course">
-                                    <option value="">Select Course</option> 
-                                    {{#each courses}}
-                                        <option value="{{courseId}}">{{courseCode}}</option> 
-                                    {{/each}}
-                                </select> 
-                                {{else}}
-                                    <div>No Courses</div> 
-                                {{/if}}
-                            
+
+                            {{#if courses}}
+                            <select class="form-control" name="course" id="course">
+                                <option value="">Select Course</option>
+                                {{#each courses}}
+                                <option value="{{courseId}}">{{courseCode}}</option>
+                                {{/each}}
+                            </select>
+                            {{else}}
+                            <div>No Courses</div>
+                            {{/if}}
+
                         </div>
                     </div>
                 </div>
-
-
             </fieldset>
-
             <hr />
-
             <input type="submit" class="btn btn-primary float-right" value="Add Student" /><br /><br /><br />
-
         </form>
-
         <!-- End your code here  -->
-
     </main>
 </div>

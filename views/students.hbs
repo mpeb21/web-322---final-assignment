@@ -1,5 +1,4 @@
 <div class="row">
-    
     <div class="col-md-12">
         <br>
         <h2>Students</h2>
@@ -7,37 +6,37 @@
         <h2><a href="/students/add" class="btn btn-success float-right">Add New Student</a></h2>
         <hr />
         <div class="table-responsive">
-        <table class="table ">
-            <thead>
-            <tr>
-                <th>Student&nbsp;Num</th>
-                <th>Full&nbsp;Name</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th>Status</th>
-                <th>Course ID</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-            {{#each students}}
-                <tr>
-                    <td>{{studentNum}}</td>
-                    <td><a href="/student/{{studentNum}}">{{firstName}} {{lastName}} </a></td>
-                    <td><a href="mailto:{{email}}">{{email}}</a></td>
-                    <td>{{addressStreet}} {{addressCity}} {{addressProvince}}</td>
-                    <td>{{status}}</td>
-                    <td><a href="/students?course={{course}}">{{course}}</a></td>
-                    <td><a href="student/delete/{{studentNum}}"class="btn btn-danger">remove</a></td>
-                </tr>
-            {{/each}}
-            </tbody>
-        </table>
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th>Student&nbsp;Num</th>
+                        <th>Full&nbsp;Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Status</th>
+                        <th>Course ID</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each students}}
+                    <tr>
+                        <td>{{studentNum}}</td>
+                        <td><a href="/student/{{studentNum}}">{{firstName}} {{lastName}} </a></td>
+                        <td><a href="mailto:{{email}}">{{email}}</a></td>
+                        <td>{{addressStreet}} {{addressCity}} {{addressProvince}}</td>
+                        <td>{{status}}</td>
+                        <td><a href="/students?course={{course}}">{{course}}</a></td>
+                        <td><a href="student/delete/{{studentNum}}" class="btn btn-danger">remove</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
     </div>
     {{#unless students}}
     <div class="col-md-12 text-center">
-            <strong>{{message}}</strong>
+        <strong>{{message}}</strong>
     </div>
     {{/unless}}
 </div>
